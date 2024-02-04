@@ -20,28 +20,23 @@ jobs:
 
     - name: Build project for Windows
       run: dotnet publish --configuration Release --runtime win-x64 --output ./publish/windows /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-      shell: bash
 
     - name: Build project for Linux
       run: dotnet publish --configuration Release --runtime linux-x64 --output ./publish/linux /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-      shell: bash
+
+    - name: Install GitHub CLI
+      run: |
+        sudo apt update
+        sudo apt install -y gh
 
     - name: Upload Release Asset (Windows)
-      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./publish/windows/DynuSharp.HttpTest.exe
-        asset_name: DynuSharp.HttpTest-windows.exe
-        asset_content_type: application/octet-stream
+      run: |
+        gh release upload ${{ github.ref_name }} ./publish/windows/DynuSharp.HttpTest.exe --clobber
 
     - name: Upload Release Asset (Linux)
-      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./publish/linux/DynuSharp.HttpTest
-        asset_name: DynuSharp.HttpTest-linux
-        asset_content_type: application/octet-stream
+      run: |
+        gh release upload ${{ github.ref_name }} ./publish/linux/DynuSharp.HttpTest --clobber
