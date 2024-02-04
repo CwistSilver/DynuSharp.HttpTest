@@ -1,4 +1,6 @@
 # DynuSharp.HttpTest
+![Example image](assets/example-1.png)
+
 **'DynuSharp.HttpTest'** is a console application that serves as both a testing framework and an example implementation for the [DynuSharp library](https://github.com/CwistSilver/DynuSharp). It's designed to validate the connectivity and responsiveness of Dynu API endpoints.
 
 ## Features
