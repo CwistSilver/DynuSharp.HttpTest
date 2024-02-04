@@ -11,7 +11,7 @@
 
 ## Getting Started
 ### Using Pre-built Releases
-For ease of use, pre-built releases for Windows and Linux are available under the Releases tab. Download the appropriate version for your system.
+For ease of use, pre-built releases for Windows and Linux are available under the [Releases tab](https://github.com/CwistSilver/DynuSharp.HttpTest/releases). Download the appropriate version for your system.
 
 ### Building from Source
 If you prefer to build the application from source or if you're using a platform for which there isn't a pre-built release, follow these steps:
